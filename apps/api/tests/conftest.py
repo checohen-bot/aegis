@@ -26,6 +26,7 @@ def client(tmp_path: object) -> Iterator[TestClient]:
     settings = Settings(
         database_url=f"sqlite:///{db_path}",
         log_level="WARNING",
+        cors_origins=("http://localhost:3000",),
     )
     app = create_app(settings)
     # Entering the context manager runs the lifespan (create_all) so the schema

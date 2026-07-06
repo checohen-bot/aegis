@@ -15,6 +15,7 @@ from contextlib import asynccontextmanager
 from typing import AsyncIterator
 
 from fastapi import FastAPI, Request, Response
+from fastapi.middleware.cors import CORSMiddleware
 
 from .config import Settings, load_settings
 from .db import create_all, create_db_engine, create_session_factory
@@ -55,6 +56,17 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.settings = settings
     app.state.engine = engine
     app.state.session_factory = session_factory
+
+    # The web tier (apps/web) runs on a different origin (port 3000) and calls
+    # this API directly from the browser, so CORS must be explicit. Origins are
+    # configured, never hardcoded beyond the local-dev default (see config.py).
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=list(settings.cors_origins),
+        allow_credentials=False,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
     @app.middleware("http")
     async def trace_id_middleware(
