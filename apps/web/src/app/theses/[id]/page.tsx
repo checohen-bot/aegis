@@ -121,6 +121,9 @@ export default function ThesisDetailPage({
         )}
         {thesis.status === "active" && (
           <div>
+            <p style={{ fontSize: 13, color: "#666", marginBottom: 8 }}>
+              A thesis proven wrong is the process working. Record it plainly.
+            </p>
             <input
               style={{
                 width: "100%",

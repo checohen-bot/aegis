@@ -67,9 +67,9 @@ export default function NewThesisPage(): React.JSX.Element {
       <a href="/" style={{ fontSize: 13 }}>
         ← Back
       </a>
-      <h2 style={{ fontSize: 18 }}>Form a new thesis</h2>
+      <h2 style={{ fontSize: 18 }}>Form a thesis</h2>
       <form onSubmit={handleSubmit}>
-        <label style={labelStyle}>Company reference</label>
+        <label style={labelStyle}>Company</label>
         <input
           style={inputStyle}
           value={companyRef}
@@ -77,7 +77,7 @@ export default function NewThesisPage(): React.JSX.Element {
           required
         />
 
-        <label style={labelStyle}>Author reference</label>
+        <label style={labelStyle}>Author</label>
         <input
           style={inputStyle}
           value={authorRef}
@@ -135,7 +135,7 @@ export default function NewThesisPage(): React.JSX.Element {
           required
         />
 
-        <label style={labelStyle}>Conviction level (1–5)</label>
+        <label style={labelStyle}>Conviction (1–5)</label>
         <input
           style={inputStyle}
           type="number"

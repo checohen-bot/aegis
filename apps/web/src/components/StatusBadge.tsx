@@ -11,16 +11,20 @@ export function StatusBadge({
     active: "#2f6f43",
     invalidated: "#b00020",
   };
+  const labels: Record<string, string> = {
+    draft: "Draft",
+    active: "Active",
+    invalidated: "Invalidated",
+  };
   return (
     <span
       style={{
         fontSize: 12,
         fontWeight: 600,
         color: colors[status] ?? "#555",
-        textTransform: "uppercase",
       }}
     >
-      {status}
+      {labels[status] ?? status}
     </span>
   );
 }

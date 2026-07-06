@@ -60,7 +60,10 @@ export default function HomePage(): React.JSX.Element {
         <p style={{ color: "#b00020" }}>Error: {state.message}</p>
       )}
       {state.kind === "loaded" && state.theses.length === 0 && (
-        <p style={{ color: "#666" }}>No theses yet. Form your first one.</p>
+        <p style={{ color: "#666" }}>
+          No theses yet. Form your first — a claim about a company, and what
+          would prove it wrong.
+        </p>
       )}
       {state.kind === "loaded" &&
         state.theses.map((thesis) => (
