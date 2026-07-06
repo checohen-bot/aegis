@@ -147,3 +147,8 @@ temp/
 .cache/
 *.bak
 *.orig
+
+# Sandbox-only TLS-proxy CA certs dropped into build contexts (never committed).
+# The certs/ directories themselves are kept (with .gitkeep) as an empty,
+# no-op CA-injection point for environments behind an intercepting proxy.
+apps/*/certs/*.crt
