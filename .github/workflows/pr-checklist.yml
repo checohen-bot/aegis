@@ -1,0 +1,33 @@
+name: PR Checklist
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+permissions:
+  contents: read
+
+jobs:
+  rfc-adr-reference:
+    name: Require RFC/ADR reference
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify PR body references an RFC or ADR
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${PR_BODY}" ]; then
+            echo "::error::The pull request body is empty. Please fill out the PR template, including an RFC or ADR reference."
+            exit 1
+          fi
+
+          if printf '%s' "${PR_BODY}" | grep -qiE 'RFC-[0-9]+|ADR-[0-9]+|No RFC/ADR needed'; then
+            echo "PR body contains an RFC/ADR reference or an explicit opt-out. Check passed."
+            exit 0
+          fi
+
+          echo "::error::No RFC or ADR reference found in the PR description."
+          echo "::error::Add a reference such as 'RFC-0007' or 'ADR-0012', or use the opt-out phrase 'No RFC/ADR needed — <reason>'."
+          exit 1

@@ -1,0 +1,19 @@
+# CODEOWNERS for the Aegis Engineering Bible
+#
+# This file assigns default reviewers for pull requests. Order matters:
+# the LAST matching pattern for a given path takes precedence.
+#
+# Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything in the repository.
+* @checohen-bot
+
+# ---------------------------------------------------------------------------
+# Illustrative examples only — these lines are intentionally commented out.
+# Uncomment and replace the placeholder teams/handles with real owners as the
+# team grows and module ownership becomes meaningful. They are NOT active rules.
+# ---------------------------------------------------------------------------
+
+# /bible/   @checohen-bot @aegis/docs-maintainers
+# /adrs/    @checohen-bot @aegis/architecture-council
+# /rfcs/    @checohen-bot @aegis/architecture-council
